@@ -1,4 +1,6 @@
-# headlines-pwa
+# Headlines PWA 
+
+It's an app to get news headlines from over 30,000 news sources and blogs using News API.
 
 ## CLI Commands
 

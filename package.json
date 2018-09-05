@@ -5,9 +5,9 @@
   "license": "MIT",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
-    "build": "preact build",
-    "serve": "preact build && preact serve",
-    "dev": "preact watch",
+    "build": "preact build --no-service-worker --template src/template.html",
+    "serve": "preact build --no-service-worker --template src/template.html && preact serve",
+    "dev": "preact watch --template src/template.html",
     "lint": "eslint src",
     "test": "jest ./tests"
   },
@@ -24,7 +24,8 @@
     "if-env": "^1.0.0",
     "jest": "^21.2.1",
     "preact-cli": "^2.1.0",
-    "preact-render-spy": "^1.2.1"
+    "preact-render-spy": "^1.2.1",
+    "workbox-webpack-plugin": "^3.4.1"
   },
   "dependencies": {
     "preact": "^8.2.6",
