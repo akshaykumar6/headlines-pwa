@@ -3,3 +3,20 @@
 	min-height: 100%;
 	width: 100%;
 }
+.newsItem{
+	width: 30%;
+	height: 400px;
+	background: #f2f2f2;
+	margin: 10px;
+	float: left;
+	color: #000000;
+	text-decoration: none;
+}
+.bannerImg{
+	/* margin: -10px -10px 10px -10px; */
+	height: 200px;
+	width: 100%;
+}
+.newsContent{
+	padding: 10px;
+}

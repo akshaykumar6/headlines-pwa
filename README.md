@@ -2,9 +2,12 @@
 
 It's an app to get news headlines from over 30,000 news sources and blogs using News API.
 
-## CLI Commands
+## Installation
 
 ``` bash
+# clone the repository
+git clone git@github.com:akshaykumar6/headlines-pwa.git
+
 # install dependencies
 npm install
 
@@ -21,4 +24,4 @@ npm run serve
 npm run test
 ```
 
-For detailed explanation on how things work, checkout the [CLI Readme](https://github.com/developit/preact-cli/blob/master/README.md).
+Authored and maintained by [Akshay Sharma](https://akshaykumar6.github.io/).
