@@ -1,15 +1,28 @@
 import { h, Component } from 'preact';
 import axios from 'axios';
 import style from './style';
+import Item from '../../components/item';
+import {countries, callingCountries, lookup} from 'country-data';
+import {supportedCountries} from '../../util/countries';
 
 export default class Home extends Component {
 	state = {
 		articles: [],
-		country: 'IN',
+		country: 'in',
 		category: 'general'
 	}
 
+	countryOptions = Object.keys(supportedCountries).map((val) => {
+		let country = countries[val.toUpperCase()];
+		let isSelected = false;
+		if (this.state.country == val) {
+			isSelected = true;
+		}
+		return (<option value={val} selected={isSelected}>{country.emoji} - {country.name}</option>)
+	})
+
 	componentDidMount(){
+		console.log('supportedCountries ::',supportedCountries);
 		this.fetchNews();
 	}
 
@@ -56,14 +69,7 @@ export default class Home extends Component {
 		if (this.state.articles.length) {
 			items = this.state.articles.map((element, index) => {
 				return (
-					<a className={style.newsItem} href={element.url} target="_blank">
-						<img src={element.urlToImage} class={style.bannerImg} />
-						<div class={style.newsContent}>
-							<h3>{element.title}</h3>
-							<p>{element.description}</p>
-							<span>{element.author} | {element.publishedAt}</span>
-						</div>
-					</a>
+					<Item data={element} />
 				);
 			})
 		}
@@ -71,18 +77,26 @@ export default class Home extends Component {
 		return(
 			<div class={style.home}>
 				<div>
-					<input name="country" value={this.state.country} onChange={this.handleChange}></input>
-					<select name="category" value={this.state.category} onChange={this.handleChange}>
-						<option value="business">business</option>
-						<option value="entertainment">entertainment</option>
-						<option value="general">general</option>
-						<option value="health">health</option>
-						<option value="science">science</option>
-						<option value="sports">sports</option>
-						<option value="technology">technology</option>
-					</select>
+					<div class={style.wd50}>
+						<select class={style.homeSelect} name="country" value={this.state.country} onChange={this.handleChange}>
+							{this.countryOptions}
+						</select>
+					</div>
+					<div class={style.wd50}>
+						<select class={style.homeSelect} name="category" value={this.state.category} onChange={this.handleChange}>
+							<option value="general">General</option>
+							<option value="business">Business</option>
+							<option value="entertainment">Entertainment</option>
+							<option value="health">Health</option>
+							<option value="science">Science</option>
+							<option value="sports">Sports</option>
+							<option value="technology">Technology</option>
+						</select>
+					</div>
 				</div>
-				{items}
+				<div class={style.newsContainer}>
+					{items}
+				</div>
 			</div>
 		);
 	}

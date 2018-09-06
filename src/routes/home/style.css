@@ -2,21 +2,17 @@
 	padding: 56px 20px;
 	min-height: 100%;
 	width: 100%;
-}
-.newsItem{
-	width: 30%;
-	height: 400px;
 	background: #f2f2f2;
+}
+.homeSelect{
+	height: 30px;
+	font-size: 16px;
 	margin: 10px;
-	float: left;
-	color: #000000;
-	text-decoration: none;
+	padding: 5px;
 }
-.bannerImg{
-	/* margin: -10px -10px 10px -10px; */
-	height: 200px;
-	width: 100%;
+.newsContainer{
+	/* margin: 0 -10px; */
 }
-.newsContent{
-	padding: 10px;
+.wd50{
+	width: 50%;
 }
