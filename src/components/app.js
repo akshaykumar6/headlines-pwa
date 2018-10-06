@@ -9,6 +9,18 @@ import Settings from '../routes/settings';
 
 export default class App extends Component {
 	
+	state = {
+		country: localStorage.getItem('country'),
+		topics: localStorage.getItem('topics')
+	}
+
+	handleChange = (e) => {
+		let obj = this.state;
+		obj[e.target.name] = e.target.value;
+		localStorage.setItem(e.target.name, e.target.value);
+		this.setState(obj);
+	}
+
 	/** Gets fired when the route changes.
 	 *	@param {Object} event		"change" event from [preact-router](http://git.io/preact-router)
 	 *	@param {string} event.url	The newly routed URL
@@ -18,12 +30,14 @@ export default class App extends Component {
 	};
 
 	render() {
+		// console.log('this.state ::',this.state);
+		
 		return (
 			<div id="app">
 				<Header />
 				<Router onChange={this.handleRoute}>
-					<Home path="/" />
-					<Settings path="/setting" user="me" />
+					<Home path="/" {...this.state} handleChange={this.handleChange} />
+					<Settings path="/settings" {...this.state} handleChange={this.handleChange} />
 				</Router>
 			</div>
 		);

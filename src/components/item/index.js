@@ -4,8 +4,12 @@ import style from './style';
 const Item = (props) => {
   // console.log('props ::',props);
   let data = props.data;
+  let imageUrl = data.urlToImage;
+  if (!imageUrl) {
+    imageUrl = '/assets/newspaper.png';
+  }
   let itemStyle = {
-    'background-image': `url(${data.urlToImage})`
+    'background-image': `url(${imageUrl})`
   }
   return(
 	<a className={style.newsItem} href={data.url} target="_blank" style={itemStyle}>

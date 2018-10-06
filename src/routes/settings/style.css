@@ -1,0 +1,20 @@
+.settings {
+	padding: 65px 20px 20px 20px;
+	min-height: 100%;
+	width: 100%;
+}
+
+.homeSelect{
+	height: 30px;
+	font-size: 16px;
+	margin: 10px;
+	padding: 5px;
+}
+
+.topicsSelect{
+	width: 100%;
+	font-size: 16px;
+	margin: 10px 0;
+	display: block;
+	padding: 5px;
+}

@@ -2,43 +2,51 @@ import { h, Component } from 'preact';
 import axios from 'axios';
 import style from './style';
 import Item from '../../components/item';
-import {countries, callingCountries, lookup} from 'country-data';
-import {supportedCountries} from '../../util/countries';
+import {countries} from 'country-data';
 
 export default class Home extends Component {
 	state = {
 		articles: [],
-		country: 'in',
-		category: 'general'
+		page: 1
 	}
 
-	countryOptions = Object.keys(supportedCountries).map((val) => {
-		let country = countries[val.toUpperCase()];
-		let isSelected = false;
-		if (this.state.country == val) {
-			isSelected = true;
-		}
-		return (<option value={val} selected={isSelected}>{country.emoji} - {country.name}</option>)
-	})
-
 	componentDidMount(){
-		console.log('supportedCountries ::',supportedCountries);
 		this.fetchNews();
+		let elm = document.getElementById('app');
+		
+		elm.onscroll = () => {
+			if(Math.ceil(elm.scrollTop) + elm.clientHeight == elm.scrollHeight){
+				console.log('User has scrolled to the bottom of the element');
+				this.setState({
+					page: this.state.page+1
+				});
+				this.fetchNews();
+			}
+		}
 	}
 
 	fetchNews(){
-		let country = this.state.country || 'IN', 
-		category = this.state.category || 'general';
+		let country = this.props.country || 'IN', 
+		category = this.props.category || 'general',
+		topics = this.props.topics || 'news';
 
 		let API_BASE_URL = "https://newsapi.org/v2"
 		let API_KEY = "a6a21e07f9ef4e5fb89b5f5eab675095"
-		let apiURL = `${API_BASE_URL}/top-headlines?pageSize=100&country=${country}`
+		// let apiURL = `${API_BASE_URL}/top-headlines?pageSize=20&country=${country}`
 
-		if (category) {
-			apiURL+=`&category=${category}`
-		}
+		// if (category) {
+		// 	apiURL+=`&category=${category}`
+		// }
 
+		let countryObj = countries[country.toUpperCase()];
+		topics = `${countryObj.name},${topics}`
+		let query = topics.split(',').join(' OR ');
+		console.log('query ::',query);
+		
+		let apiURL = `${API_BASE_URL}/everything?pageSize=20&q=${encodeURI(query)}`;
 		apiURL+=`&apiKey=${API_KEY}`
+		apiURL+=`&page=${this.state.page}`
+
 
 		axios.get(apiURL)
 		.then((response) => {
@@ -46,7 +54,7 @@ export default class Home extends Component {
 			console.log(response.status); // ex.: 200
 			if (response.status == 200) {
 				this.setState({
-					articles: response.data.articles
+					articles: this.state.articles.concat(response.data.articles)
 				})
 			}
 		})
@@ -55,15 +63,9 @@ export default class Home extends Component {
 		}); 
 	}
 
-	handleChange = (e) => {
-		let obj = this.state;
-		obj[e.target.name] = e.target.value;
-		this.setState(obj);
-		this.fetchNews();
-	}
-
 	render(){
 		console.log('render');
+		console.log('this.props ::',this.props);
 		console.log(this.state);
 		let items = ""
 		if (this.state.articles.length) {
@@ -76,26 +78,13 @@ export default class Home extends Component {
 		
 		return(
 			<div class={style.home}>
-				<div>
-					<div class={style.wd50}>
-						<select class={style.homeSelect} name="country" value={this.state.country} onChange={this.handleChange}>
-							{this.countryOptions}
-						</select>
-					</div>
-					<div class={style.wd50}>
-						<select class={style.homeSelect} name="category" value={this.state.category} onChange={this.handleChange}>
-							<option value="general">General</option>
-							<option value="business">Business</option>
-							<option value="entertainment">Entertainment</option>
-							<option value="health">Health</option>
-							<option value="science">Science</option>
-							<option value="sports">Sports</option>
-							<option value="technology">Technology</option>
-						</select>
-					</div>
-				</div>
-				<div class={style.newsContainer}>
-					{items}
+				<div id="news-container" class={style.newsContainer}>
+					{items ? items : 
+						<div class={style.loadingCnt}>
+							<img src="/assets/newspaper.png" />
+							<h3>Getting some fresh news for you...</h3>
+						</div>
+					}
 				</div>
 			</div>
 		);

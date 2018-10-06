@@ -17,4 +17,6 @@ html, body {
 
 #app {
 	height: 100%;
+	overflow: auto;
+	background: #f2f2f2;
 }
