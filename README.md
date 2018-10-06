@@ -2,6 +2,10 @@
 
 It's an app to get news headlines from over 30,000 news sources and blogs using News API.
 
+## Lighthouse Report
+
+<img src="https://i.imgur.com/ggY4gsf.png" width="630" height="276" />
+
 ## Installation
 
 ``` bash
