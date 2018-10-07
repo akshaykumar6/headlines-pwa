@@ -47,12 +47,30 @@ export default class Settings extends Component {
 						<option value="technology">Technology</option>
 					</select>
 				</div>
-				<div>
+				<div class={style.wd50}>
+					<label>Language : </label>
+					<select class={style.homeSelect} name="language" value={this.props.language} onChange={this.props.handleChange}>
+						<option value="">Any</option>
+						<option value="ar">Arabic</option>
+						<option value="de">German</option>
+						<option value="en">English</option>
+						<option value="fr">French</option>
+						<option value="he">Hebrew</option>
+						<option value="it">Italian</option>
+						<option value="nl">Dutch</option>
+						<option value="no">Norwegian</option>
+						<option value="pt">Portuguese</option>
+						<option value="ru">Russian</option>
+						<option value="se">Sami</option>
+						{/* <option value="ud">ud</option> */}
+						<option value="zh">Chinese</option>
+					</select>
+				</div>
+				<div class={style.formActions}>
 					<Link class="btn" href="/">Save</Link>
 				</div>
 				<div class={style.footer}>
-					<a href="https://github.com/akshaykumar6/headlines-pwa/issues" target="_blank">Feedback</a> |
-					Contribute on <a href="https://github.com/akshaykumar6/headlines-pwa" target="_blank">Github</a> | 
+					<a href="https://github.com/akshaykumar6/headlines-pwa/issues" target="_blank">Feedback</a> | <a href="https://github.com/akshaykumar6/headlines-pwa" target="_blank">Github</a> | 
 					Developed by <a href="https://akshaykumar6.github.io" target="_blank">Akshay Sharma</a>
 				</div>
 			</div>

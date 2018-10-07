@@ -32,7 +32,9 @@ export default class Home extends Component {
 	fetchNews(){
 		let country = this.props.country || 'IN', 
 		category = this.props.category || 'general',
-		topics = this.props.topics || 'news';
+		topics = this.props.topics || 'news',
+		language = this.props.language;
+		console.log('this.props.language ::',this.props.language);
 		
 		let countryObj = countries[country.toUpperCase()];
 		topics = `${countryObj.name},${topics}`
@@ -41,12 +43,13 @@ export default class Home extends Component {
 		}
 		let query = this.getTopic(topics);
 		// console.log('query ::',query);
-		
 		let apiURL = `${API_BASE_URL}/everything?pageSize=10&q=${encodeURI(query)}`;
 		apiURL+=`&apiKey=${API_KEY}`
 		apiURL+=`&page=${this.state.page}`
-
-
+		if (language) {
+			apiURL+=`&language=${language}`
+		}
+	
 		axios.get(apiURL)
 		.then((response) => {
 			if (response.status == 200) {
