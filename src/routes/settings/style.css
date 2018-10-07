@@ -19,6 +19,19 @@
 	padding: 5px;
 }
 
+.footer{
+	position: absolute;
+	bottom: 20px;
+	width: 100%;
+  text-align: center;
+	font-size: 14px;
+	padding-top: 20px;
+}
+
+.footer a {
+	color: #444 !important;
+}
+
 @media only screen and (max-width: 420px){
 	.homeSelect{
 		width: 100%;

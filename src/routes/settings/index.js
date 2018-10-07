@@ -50,6 +50,11 @@ export default class Settings extends Component {
 				<div>
 					<Link class="btn" href="/">Save</Link>
 				</div>
+				<div class={style.footer}>
+					<a href="https://github.com/akshaykumar6/headlines-pwa/issues" target="_blank">Feedback</a> |
+					Contribute on <a href="https://github.com/akshaykumar6/headlines-pwa" target="_blank">Github</a> | 
+					Developed by <a href="https://akshaykumar6.github.io" target="_blank">Akshay Sharma</a>
+				</div>
 			</div>
 		);
 	}
