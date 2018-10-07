@@ -51,3 +51,8 @@
 .header nav a.active {
 	background: rgba(0,0,0,0.4);
 }
+
+.header nav a img {
+	height: 55%;
+	vertical-align: middle;
+}

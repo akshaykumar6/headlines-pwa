@@ -7,7 +7,7 @@
 .homeSelect{
 	height: 30px;
 	font-size: 16px;
-	margin: 10px;
+	margin: 10px 0;
 	padding: 5px;
 }
 
@@ -17,4 +17,10 @@
 	margin: 10px 0;
 	display: block;
 	padding: 5px;
+}
+
+@media only screen and (max-width: 420px){
+	.homeSelect{
+		width: 100%;
+	}
 }

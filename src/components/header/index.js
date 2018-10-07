@@ -9,7 +9,9 @@ const Header = () => (
 		</span>
 
 		<nav>
-			<Link activeClassName={style.active} href="/settings">Settings</Link>
+			<Link activeClassName={style.active} href="/settings" title="Preferences">
+				<img src="/assets/preferences-icon.svg" />
+			</Link>
 		</nav>
 	</header>
 );

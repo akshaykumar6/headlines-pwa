@@ -22,6 +22,7 @@ export default class Settings extends Component {
 	render() {
 		return (
 			<div class={style.settings}>
+				<h2>Preferences</h2>
 				<div class={style.wd50}>
 					<label>Favourite Topics : </label>
 					<textarea class={style.topicsSelect} placeholder="Enter the topics you want to follow..." rows='4' name="topics" value={this.props.topics} onChange={this.props.handleChange}>
