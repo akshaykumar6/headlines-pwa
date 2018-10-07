@@ -10,8 +10,9 @@ import Settings from '../routes/settings';
 export default class App extends Component {
 	
 	state = {
-		country: localStorage.getItem('country'),
-		topics: localStorage.getItem('topics')
+		country: localStorage.getItem('country') || 'in',
+		topics: localStorage.getItem('topics'),
+		category: localStorage.getItem('category') || 'general'
 	}
 
 	handleChange = (e) => {

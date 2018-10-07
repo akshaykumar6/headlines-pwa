@@ -2,6 +2,7 @@ import { h, Component } from 'preact';
 import style from './style';
 import {countries} from 'country-data';
 import {supportedCountries} from '../../util/countries';
+import { Link } from 'preact-router/match';
 
 export default class Settings extends Component {
 	
@@ -22,8 +23,8 @@ export default class Settings extends Component {
 		return (
 			<div class={style.settings}>
 				<div class={style.wd50}>
-					<label>Topics : </label>
-					<textarea class={style.topicsSelect} rows='4' name="topics" value={this.props.topics} onChange={this.props.handleChange}>
+					<label>Favourite Topics : </label>
+					<textarea class={style.topicsSelect} placeholder="Enter the topics you want to follow..." rows='4' name="topics" value={this.props.topics} onChange={this.props.handleChange}>
 						{this.props.topics}
 					</textarea>
 				</div>
@@ -33,8 +34,8 @@ export default class Settings extends Component {
 						{this.countryOptions}
 					</select>
 				</div>
-				{/* <div class={style.wd50}>
-					<label>Category : </label>
+				<div class={style.wd50}>
+					<label>Preferred Category : </label>
 					<select class={style.homeSelect} name="category" value={this.props.category} onChange={this.props.handleChange}>
 						<option value="general">General</option>
 						<option value="business">Business</option>
@@ -44,8 +45,11 @@ export default class Settings extends Component {
 						<option value="sports">Sports</option>
 						<option value="technology">Technology</option>
 					</select>
-				</div> */}
 				</div>
+				<div>
+					<Link class="btn" href="/">Save</Link>
+				</div>
+			</div>
 		);
 	}
 }

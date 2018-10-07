@@ -2,12 +2,11 @@ import { h } from 'preact';
 import style from './style';
 
 const Item = (props) => {
-  // console.log('props ::',props);
   let data = props.data;
   let imageUrl = data.urlToImage;
-  if (!imageUrl) {
-    imageUrl = '/assets/newspaper.png';
-  }
+  // if (!imageUrl) {
+  //   imageUrl = '/assets/newspaper.png';
+  // }
   let itemStyle = {
     'background-image': `url(${imageUrl})`
   }
