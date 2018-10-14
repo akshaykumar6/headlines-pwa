@@ -11,12 +11,13 @@ const categories = ['business','entertainment','health','science','sports','tech
 export default class Home extends Component {
 	state = {
 		articles: [],
-		page: 1
+		page: 1,
+		isFetching: false
 	}
 
 	componentDidMount(){
 		this.fetchHeadlines();
-		let elm = document.getElementById('app');
+		let elm = document.getElementById('news-container');
 		
 		elm.onscroll = () => {
 			if(Math.ceil(elm.scrollTop) + elm.clientHeight == elm.scrollHeight){
@@ -49,11 +50,12 @@ export default class Home extends Component {
 		if (language) {
 			apiURL+=`&language=${language}`
 		}
-	
+		this.setState({isFetching: true})
 		axios.get(apiURL)
 		.then((response) => {
 			if (response.status == 200) {
 				this.setState({
+					isFetching: false,
 					articles: this.state.articles.concat(response.data.articles)
 				})
 			}
@@ -110,6 +112,12 @@ export default class Home extends Component {
 							<h3>Getting some fresh news for you...</h3>
 						</div>
 					}
+					{ this.state.isFetching ?
+						<div class={style.loadingMoreCnt}>
+							<h3>Fetching some more...</h3>
+						</div> : ''
+					}
+					
 				</div>
 			</div>
 		);

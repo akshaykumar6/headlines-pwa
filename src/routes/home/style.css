@@ -1,11 +1,15 @@
 .home {
-	padding: 56px 0px;
+	padding: 56px 0 0 0;
+	height: 100%;
 }
 .newsContainer{
 	display: flex;
 	width: 100vw;
 	flex-direction: row;
 	flex-wrap: wrap;
+	height: 100%;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
 }
 .wd50{
 	width: 50%;
@@ -16,4 +20,9 @@
 }
 .loadingCnt img{
 	width: 50vh;
+}
+.loadingMoreCnt{
+	text-align: center;
+	padding: 10px;
+	width: 100%;
 }
