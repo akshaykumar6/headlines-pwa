@@ -10,7 +10,7 @@ const Header = () => (
 
 		<nav>
 			<Link activeClassName={style.active} href="/settings" title="Preferences">
-				<img src="/assets/preferences-icon.svg" />
+				<img src="/assets/preferences-icon.svg" alt="Preferences"/>
 			</Link>
 		</nav>
 	</header>
