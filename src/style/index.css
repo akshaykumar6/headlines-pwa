@@ -3,7 +3,7 @@ html, body {
 	width: 100%;
 	padding: 0;
 	margin: 0;
-	background: #FAFAFA;
+	background: #f2f2f2;
 	font-family: 'Helvetica Neue', arial, sans-serif;
 	font-weight: 400;
 	color: #444;
@@ -46,4 +46,11 @@ html, body {
 	background-color: #eff3f6;
 	background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
 	text-decoration: none;
+}
+
+/* CSS specific to iOS devices */ 
+@supports (-webkit-overflow-scrolling: touch) {
+	-webkit-touch-callout: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-user-select: none;
 }
