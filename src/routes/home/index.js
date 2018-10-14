@@ -35,7 +35,6 @@ export default class Home extends Component {
 		category = this.props.category || 'general',
 		topics = this.props.topics || 'news',
 		language = this.props.language;
-		console.log('this.props.language ::',this.props.language);
 		
 		let countryObj = countries[country.toUpperCase()];
 		topics = `${countryObj.name},${topics}`
@@ -108,7 +107,7 @@ export default class Home extends Component {
 				<div id="news-container" class={style.newsContainer}>
 					{items ? items : 
 						<div class={style.loadingCnt}>
-							<img src="/assets/newspaper.png" />
+							<img src="/assets/images/newspaper.png" />
 							<h3>Getting some fresh news for you...</h3>
 						</div>
 					}
