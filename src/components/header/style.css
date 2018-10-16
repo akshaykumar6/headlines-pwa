@@ -56,3 +56,24 @@
 	height: 55%;
 	vertical-align: middle;
 }
+
+@supports (-webkit-overflow-scrolling: touch) {
+	.header, .header nav a{
+		height: 76px;
+	}
+
+	.header nav a, .header span{
+		line-height: 76px;
+	}
+
+	@media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (-webkit-device-pixel-ratio: 3) { 
+		.header, .header nav a{
+			height: 100px;
+		}
+	
+		.header nav a, .header span{
+			line-height: 100px;
+		}
+	}
+
+}
