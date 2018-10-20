@@ -43,7 +43,7 @@ export default class Home extends Component {
 		}
 		let query = this.getTopic(topics);
 		// console.log('query ::',query);
-		let apiURL = `${API_BASE_URL}/everything?pageSize=10&q=${encodeURI(query)}`;
+		let apiURL = `${API_BASE_URL}/everything?pageSize=5&q=${encodeURI(query)}`;
 		apiURL+=`&apiKey=${API_KEY}`
 		apiURL+=`&page=${this.state.page}`
 		if (language) {
@@ -77,7 +77,7 @@ export default class Home extends Component {
 	fetchHeadlines(){
 		let country = this.props.country || 'IN', 
 		category = this.props.category || 'general';
-		let headlinesURL = `${API_BASE_URL}/top-headlines?pageSize=20&country=${country}&category=${category}&apiKey=${API_KEY}`
+		let headlinesURL = `${API_BASE_URL}/top-headlines?pageSize=10&country=${country}&category=${category}&apiKey=${API_KEY}`
 		
 		axios.get(headlinesURL)
 		.then((response) => {
