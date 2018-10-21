@@ -3,8 +3,11 @@
 It's an app to get news headlines from over 30,000 news sources and blogs using News API.
 
 ## Lighthouse Report
+<div style="text-align:center">
+<img src="https://i.imgur.com/VFFBEuk.png" width="630" height="276" />
+</div>
 
-<img src="https://i.imgur.com/ggY4gsf.png" width="630" height="276" />
+Emulated mobile runtime settings without throttling.
 
 ## Installation
 
