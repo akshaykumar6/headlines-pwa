@@ -11,7 +11,7 @@ const categories = ['business','entertainment','health','science','sports','tech
 export default class Home extends Component {
 	state = {
 		articles: [],
-		page: 1,
+		pages: {},
 		isFetching: false
 	}
 
@@ -22,9 +22,6 @@ export default class Home extends Component {
 		elm.onscroll = () => {
 			if(Math.ceil(elm.scrollTop) + elm.clientHeight == elm.scrollHeight){
 				// console.log('User has scrolled to the bottom of the element');
-				this.setState({
-					page: this.state.page+1
-				});
 				this.fetchNews();
 			}
 		}
@@ -42,20 +39,30 @@ export default class Home extends Component {
 			topics += `,${category}`;
 		}
 		let query = this.getTopic(topics);
-		// console.log('query ::',query);
+		let encodedQuery = encodeURI(query);
 		let apiURL = `${API_BASE_URL}/everything?pageSize=5&q=${encodeURI(query)}`;
 		apiURL+=`&apiKey=${API_KEY}`
-		apiURL+=`&page=${this.state.page}`
+
+		let pages = this.state.pages;
+		if(pages[encodedQuery]){
+			pages[encodedQuery] += 1;
+		} else {
+			pages[encodedQuery] = 1;
+		}
+		apiURL+=`&page=${pages[encodedQuery]}`
+		
 		if (language) {
 			apiURL+=`&language=${language}`
 		}
+		
 		this.setState({isFetching: true})
 		axios.get(apiURL)
 		.then((response) => {
 			if (response.status == 200) {
 				this.setState({
 					isFetching: false,
-					articles: this.state.articles.concat(response.data.articles)
+					articles: this.state.articles.concat(response.data.articles),
+					pages
 				})
 			}
 		})
