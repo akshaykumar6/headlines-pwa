@@ -40,7 +40,7 @@ export default class Home extends Component {
 		}
 		let query = this.getTopic(topics);
 		let encodedQuery = encodeURI(query);
-		let apiURL = `${API_BASE_URL}/everything?pageSize=5&q=${encodeURI(query)}`;
+		let apiURL = `${API_BASE_URL}/everything?pageSize=5&sortBy=publishedAt&q=${encodeURI(query)}`;
 		apiURL+=`&apiKey=${API_KEY}`
 
 		let pages = this.state.pages;

@@ -1,6 +1,7 @@
 {
   "name": "Headlines",
   "short_name": "Headlines",
+  "version": "0.1",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
