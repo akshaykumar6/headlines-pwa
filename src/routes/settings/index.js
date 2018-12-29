@@ -71,7 +71,7 @@ export default class Settings extends Component {
 				</div>
 				<div class={style.footer}>
 					<a href="https://github.com/akshaykumar6/headlines-pwa/issues" target="_blank">Feedback</a> | <a href="https://github.com/akshaykumar6/headlines-pwa" target="_blank">Github</a> | 
-					Developed by <a href="https://akshaykumar6.github.io" target="_blank">Akshay Sharma</a>
+					Developed by <a href="https://akshaykumar6.github.io" target="_blank">Akshay Sharma</a> | powered by <a href="https://newsapi.org/" target="_blank">NewsAPI.org</a>
 				</div>
 			</div>
 		);
